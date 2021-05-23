@@ -1,0 +1,67 @@
+---
+title: "Policy Rules and Economic Performance"
+author: "Nithin"
+date: "23/05/2021"
+output: 
+  beamer_presentation:
+    slide_level: 3
+    includes:
+      in_header: preabmle.tex            
+    theme: metropolis
+    latex_engine: lualatex
+    template: sv_temp2.tex
+institute: IIT-Kharagpur
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Introduction
+
+Debates about the conduct of monetary policy have evolved over time from “rules versus discretion” to “policy rules versus constrained discretion.”
+
+- Is economic performance better under rules-based or discretionary monetary policy?
+
+- Friedman (1960), Kydland and Prescott (1977), Taylor (1993a) influental in the rules vs discretion debate  
+- Contrained Discretion -Bernanke (2003)  
+    - Dual mandate-two goals of price stability and maximum sustainable employment
+    - Any rule with positive coefficients on both gaps consistent
+
+### Which Rule?
+
+Given the dual mandate, which rule should **Fed** choose?
+
+- In the literature, Optimal policy choosen by
+    - Estimating a model
+    - simulate the model using the estimated coefficients and disturbances
+    - Minimise loss function -  inflation, output gap and change of nominal interest rates
+    - Popular models- Christiano, Eichenbaum, and Evans (2005), Smets and Wouters (2007)
+- This paper
+    - Compare economic performance of the rules
+    - Calculate **Quadratic Loss Ratio**- Loss in periods of *High Deviation* divided by Loss in periods of *Low Deviation*
+    - Criterion - Loss ratio to be greater than one
+    - rules with higher loss ratios are preferred to rules with lower loss ratios
+
+### Central Results
+1. Economic performance is better in low deviations periods than in high deviations periods for the vast majority of rules
+1. *Inflation gap* tilting rules preferred to *Output gap*
+
+### Methodolgy
+- `r xfun::n2w(4)` benchmark rules -  equal weight on *inflation* and *unemployment*
+    * Standard Taylor rule with time varying neutral interest rate
+    * Taylor rule with unemployment gap
+    * Taylor rule with 2% neutral interest rate
+    * Taylor rule with time varying
+- deviations measured as absolute deviations 
+- loss calculated *`r xfun::n2w(6)`* quarters after classification 
+
+
+## Slide with Plot
+### New slide
+
+```{r pressure}
+plot(pressure)
+```
+
