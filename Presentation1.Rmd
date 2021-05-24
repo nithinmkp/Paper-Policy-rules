@@ -1,22 +1,27 @@
 ---
 title: "Policy Rules and Economic Performance"
 author: "Nithin"
-date: "23/05/2021"
+date: "`r format(Sys.Date(), '%d %B, %Y')`"
+logo: kgp.png
 output: 
   beamer_presentation:
     slide_level: 3
     includes:
       in_header: preabmle.tex            
     theme: metropolis
-    latex_engine: lualatex
-    template: sv_temp2.tex
-institute: IIT-Kharagpur
-
+    latex_engine: xelatex
+    template: temp_new.tex
+    number_sections: true
+section-titles: false
+short-author: Nithin
+institute: Indian Institute of Technology-Kharagpur
+short-institute: IIT-KGP
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+---
 
 ### Introduction
 
@@ -24,7 +29,7 @@ Debates about the conduct of monetary policy have evolved over time from “rule
 
 - Is economic performance better under rules-based or discretionary monetary policy?
 
-- Friedman (1960), Kydland and Prescott (1977), Taylor (1993a) influental in the rules vs discretion debate  
+- Friedman (1960), Kydland and Prescott (1977), Taylor (1993a) influential in the rules vs discretion debate  
 - Contrained Discretion -Bernanke (2003)  
     - Dual mandate-two goals of price stability and maximum sustainable employment
     - Any rule with positive coefficients on both gaps consistent
@@ -58,10 +63,12 @@ Given the dual mandate, which rule should **Fed** choose?
 - loss calculated *`r xfun::n2w(6)`* quarters after classification 
 
 
-## Slide with Plot
+
 ### New slide
 
 ```{r pressure}
 plot(pressure)
 ```
 
+
+### Title
