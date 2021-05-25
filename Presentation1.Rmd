@@ -2,15 +2,16 @@
 title: "Policy Rules and Economic Performance"
 author: "Nithin"
 date: "`r format(Sys.Date(), '%d %B, %Y')`"
+titlegraphic: kgpsvg.png
 logo: "kgpsvg.png"
 output: 
   bookdown::beamer_presentation2:
     slide_level: 3
     includes:
-      in_header: preabmle.tex            
+      in_header: "templates/preabmle.tex"            
     theme: metropolis
     latex_engine: xelatex
-    template: temp_new.tex
+    template: "templates/temp_new.tex"
     number_sections: false
 toc: false
 section-titles: false
@@ -20,10 +21,13 @@ short-institute: IIT-KGP
 ---
 
 ```{r setup, include=FALSE}
+library(here)
 knitr::opts_chunk$set(echo = FALSE)
 library(captioner)
 library(knitr)
+figure_path<-paste0("../Figures/")
 ```
+
 ### Introduction
 
 Debates about the conduct of monetary policy have evolved over time from "rules versus discretion" to "policy rules versus constrained discretion."
@@ -55,8 +59,6 @@ Given the dual mandate, which rule should **Fed** choose?
     -   Criterion - Loss ratio to be greater than one
     -   rules with higher loss ratios are preferred to rules with lower loss ratios
 
-
-
 ### Central Results
 
 1.  Economic performance is better in low deviations periods than in high deviations periods for the vast majority of rules
@@ -74,7 +76,6 @@ Given the dual mandate, which rule should **Fed** choose?
 -   deviations measured as absolute deviations
 
 -   loss calculated *`r xfun::n2w(6)`* quarters after classification
-
 
 ### Initial Results
 
@@ -111,64 +112,99 @@ Given the dual mandate, which rule should **Fed** choose?
 #### Rule
 
 Taylor (1993a) proposed the following monetary policy rule,
-
+```{=tex}
 \begin{equation}
 i_t= \pi_t + \alpha(\pi_t - \pi_t^*) + \gamma y_t 
 (\#eq:eq1)
-\end{equation} 
-
-Combining terms,
-\begin{equation}
+\end{equation}
+```
+Combining terms, \begin{equation}
 i_t= \mu + \delta \pi_t  + \gamma y_t 
 (\#eq:eq2)
-\end{equation}
-where $\delta=1+\alpha$ and $\mu=R^*-\alpha \pi^*$
+\end{equation} where $\delta=1+\alpha$ and $\mu=R^*-\alpha \pi^*$
 
-- Policy rule deviations- difference between actual fed fund rate and implied interest rate by respective rules 
+-   Policy rule deviations- difference between actual fed fund rate and implied interest rate by respective rules
 
 #### Data
-- Vintages of nominal GDP, real GDP, and GDP deflator (Source: Real-Time Data Set for Macroeconomists)
-- inflation : GDP deflator, PCE (excluding food and energy prices)
-- output gap  
+
+-   Vintages of nominal GDP, real GDP, and GDP deflator (Source: Real-Time Data Set for Macroeconomists)
+-   inflation : GDP deflator, PCE (excluding food and energy prices)
+-   output gap
 
 The paper makes use of realized values for inflation and output gap
 
-- Policy rate: effective average of fed funds rate,shadow federal funds rate of Wu and Xia (2016)
-- neutral real interest rate: Time varying (calculated as 10 year average of GDP growth)
-- inflation target: 2%,time varying 
+-   Policy rate: effective average of fed funds rate,shadow federal funds rate of Wu and Xia (2016)
+-   neutral real interest rate: Time varying (calculated as 10 year average of GDP growth)
+-   inflation target: 2%,time varying
 
 \framebreak
 
 #### Constrained Discretion
-in the context of \@ref(eq:eq1), constrained discretion implies 
 
-- $\alpha >0$ so that $\delta>1$
-- $\gamma >0$  
+in the context of \@ref(eq:eq1), constrained discretion implies
 
-constrained discretion limits the class of Taylor rules to those where $\alpha>0$ and $\gamma >0$.
-> 0.
+-   $\alpha >0$ so that $\delta>1$
+-   $\gamma >0$
+
+constrained discretion limits the class of Taylor rules to those where $\alpha>0$ and $\gamma >0$. \> 0.
 
 #### Policy rule deviations
-3 rules considered  
-  - balanced rule in Taylor (1993) : $\alpha=0.5$ and $\gamma=0.5$  
-  - Yellen (2012) : $\alpha=0.5$ and $\gamma=1$  
-  - Inflation tilting: $\alpha=1$ and $\gamma=0.5$
 
+3 rules considered\
+- balanced rule in Taylor (1993) : $\alpha=0.5$ and $\gamma=0.5$\
+- Yellen (2012) : $\alpha=0.5$ and $\gamma=1$\
+- Inflation tilting: $\alpha=1$ and $\gamma=0.5$
 
-### {}
+### 
 
 ```{r panela, echo=FALSE, fig.cap="Panel A: Balanced Taylor Rule", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
-include_graphics("panel_a.png")
+include_graphics("panel-a.png")
 ```
-### {}
+
+### 
 
 ```{r panelb, echo=FALSE, fig.cap="Panel B: Yellen Rule - $\\alpha=0.5$ and $\\gamma=1$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
-include_graphics("panel_b.png")
+include_graphics("panel-b.png")
 ```
-### {}
+
+### 
 
 ```{r panelc, echo=FALSE, fig.cap="Panel C: Inflation tilting rule - $\\alpha=1$ and $\\gamma=0.5$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
-include_graphics("panel_c.png")
-```                                                                                    
+knitr::include_graphics("panel-c.png")
+```
 
+### Estimation (cont.)
 
+#### Candidate Rules for Policy
+
+-   All consistent rules are not optimal for fed policy\
+
+-   Some well known estimates from the literature
+
+    -   Taylor (1999a) : $\alpha=0.53 , \gamma=0.77$
+    -   CGG (2000) :$\alpha=1.15 , \gamma=0.93$
+    -   CEE (2005) : $\alpha=1.58,\gamma=0.45$
+    -   Smet and Wouters (2007) :$\alpha=1.04,\gamma=0.26$
+
+-   This paper- A different metric to evaluate the plausible policies
+
+    -   Consider 400 rules with $\alpha$ and $\gamma$ varrying from 0.1 to 2 in increments of 0.1
+    -   Calculate the **share of time**
+    -   Inflation tilting rules in top quartiles ($0.1<\alpha<1$)
+
+The average share in time for these 100 rules is 62 percent, while for the other 300 rules, it is only 44 percent.
+
+### 
+
+```{r share-graph, echo=FALSE, fig.cap="Share in time for 400 policy rules", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("time-matrix.png")
+```
+### Economic Performance
+Economic performance evaluated based on a quadratic loss function
+\begin{equation}
+Loss=\sum((\pi-\pi^*)^2+(U-U^*)^2)
+(\#eq:eq3)
+\end{equation}
+
+- Quadratic loss function-equal inflation and unemployment gaps are preferred to unequal gaps  
+- 
