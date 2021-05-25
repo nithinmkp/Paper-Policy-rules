@@ -2,13 +2,17 @@
 \usepackage{graphicx}
 \usepackage{rotating}
 %\setbeamertemplate{caption}[numbered]
-\usepackage{hyperref}
+%\usepackage{hyperref}
+\usepackage[noabbrev]{cleveref}
 \usepackage{caption}
 \usepackage[normalem]{ulem}
 %\mode<presentation>
 \usepackage{wasysym}
 \usepackage{ragged2e}\justifying
 \usepackage{amsmath}
+%\usepackage{fancyref}
+\usepackage{prettyref}
+\usepackage{pdfpages}
 
 
 \metroset{progressbar=frametitle}
@@ -29,6 +33,10 @@
 \setbeamercovered{transparent}
 
 \setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{frametitle continuation}[from second]
+
+%\renewcommand{\eqref}{\cref}
+\renewcommand{\eqref}{\Cref}
 
 \makeatletter
 \setlength{\metropolis@titleseparator@linewidth}{1.5pt}
