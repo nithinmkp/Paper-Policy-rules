@@ -77,35 +77,6 @@ Given the dual mandate, which rule should **Fed** choose?
 
 -   loss calculated *`r xfun::n2w(6)`* quarters after classification
 
-### Initial Results
-
--   Economic performance is better in low deviations periods than in high deviations periods
--   average loss ratio for the 100 policy rules is between 1.74 and 2.53
--   *Inflation gap* tilting rules preferred to *Output gap*
--   loss ratios are greater than one for all 80 rules with a coefficient on the inflation gap of 0.3 and above.
--   Taylor principle necessary but not sufficient condition for a policy
--   best result are for **Standard Taylor rule with time varying neutral interest rate and `r xfun::n2w(2)` percent inflation target**
-
-### Initial Results (Contd..)
-
--   *Inflation gap* tilting rules preferred to *Output gap*
-
--   The "relative loss ratio" of the inflation gap tilting rules to the output gap tilting rules : 1.30 - 1.83
-
--   Results robust to
-
-    -   higher weight on inflation loss than on unemployment loss
-    -   higher weight on unemployment loss than on inflation loss
-    -   high and low deviations periods defined (1.5 - 2.5 % thresholds)
-    -   policy lags (4 to 8 quarters)
-
-### Initial Assessments
-
--   Fed should **"constrain"** constrained direction
-
--   Results consistent with policy prescriptions (Woodford,2003; Orphanides and Williams, 2007; Laubach and Williams (2016))
-
--   Advocates addition of inflation tilting rule to the Taylor rule
 
 ### Estimation {.allowframebreaks}
 
@@ -114,7 +85,7 @@ Given the dual mandate, which rule should **Fed** choose?
 Taylor (1993a) proposed the following monetary policy rule,
 ```{=tex}
 \begin{equation}
-i_t= \pi_t + \alpha(\pi_t - \pi_t^*) + \gamma y_t 
+i_t= \pi_t + \alpha(\pi_t - \pi_t^*) + \gamma y_t+R^*
 (\#eq:eq1)
 \end{equation}
 ```
@@ -202,9 +173,147 @@ include_graphics("time-matrix.png")
 ### Economic Performance
 Economic performance evaluated based on a quadratic loss function
 \begin{equation}
-Loss=\sum((\pi-\pi^*)^2+(U-U^*)^2)
+Loss=\sum\left((\pi-\pi^*)^2+(U-U^*)^2\right)
 (\#eq:eq3)
 \end{equation}
 
 - Quadratic loss function-equal inflation and unemployment gaps are preferred to unequal gaps  
-- 
+- Loss ratios calculated since \@ref(eq:eq3) is independent of policy rule  
+- Loss ratio > 1 for good policy
+- Optimal Policy- Largest Loss ratio
+
+### Initial Results
+
+-   Economic performance is better in low deviations periods than in high deviations periods
+-   average loss ratio for the 100 policy rules is between 1.74 and 2.53
+-   *Inflation gap* tilting rules preferred to *Output gap* tilting rules
+-   loss ratios are greater than one for all 80 rules with a coefficient on the inflation gap of 0.3 and above.
+-   Taylor principle necessary but not sufficient condition for a policy
+
+### Initial Results (Cont.)
+
+-   The "relative loss ratio" of the inflation gap tilting rules to the output gap tilting rules : 1.30 - 1.83
+
+-   Results robust to
+
+    -   higher weight on inflation loss than on unemployment loss
+    -   higher weight on unemployment loss than on inflation loss
+    -   high and low deviations periods defined (1.5 - 2.5 % thresholds)
+    -   policy lags (4 to 8 quarters)
+
+### Results
+#### Output Gap, Time-Varying $R^*, π^* = 2$
+- Benchmark model: 100 policy rules ($0.1<\alpha,\gamma<1$)
+    - equal weights on inflation and unemployment
+    - threshold deviation 2%
+    - 6 quarter policy lag
+    - average discretion-to-rules loss ratio for the 100 policy rules is 2.53
+    - rules in top two quintiles are inflation gap tilting
+- Benchmark model: 400 policy rules ($0.1<\alpha,\gamma<2$)
+    - Average loss ratio is 3.50 (stronger results)
+    
+### {}
+```{r loss-a, echo=FALSE, fig.cap="Loss Ratios : $0.1 \\leq \\alpha,\\gamma \\leq 1$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("loss-a.png")
+```
+### {}
+```{r loss-b, echo=FALSE, fig.cap="Loss Ratios : $0.1 \\leq \\alpha,\\gamma \\leq 2$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("loss-b.png")
+```
+### Results (Cont.)
+    
+- Statistical tests also support inflation gap tilting rules
+- Robust results
+\vspace{0.6cm}
+
+```{r table-1, echo=FALSE,fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("table-1.png")
+```
+
+### Results (Cont.)
+#### Unemployment Gap, Time-Varying $R^*, π^* = 2$
+
+Policy Rule given by,
+
+```{=tex}
+\begin{equation}
+i_t= R^*+\pi_t + 0.5(\pi_t - \pi_t^*) + 2 (U_t - U_t^*)
+(\#eq:eq4)
+\end{equation}
+```
+
+- unemployment gap tilting rule
+- consistent with Okun's Law
+- Benchmark model: 100 policy rules ($0.1<\alpha,\gamma<1$)
+    - coefficient of unemployment varies from 0.2 to 2
+    - equal weights on inflation and unemployment
+    - threshold deviation 2%
+    - 6 quarter policy lag
+    - Results not strong compared to output gap (average discretion-to-rules loss ratio is 2.02)
+
+### {}
+```{r loss-a2, echo=FALSE, fig.cap="Loss Ratios : $0.1 \\leq \\alpha,\\gamma \\leq 1$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("loss-a2.png")
+```
+### {}
+```{r loss-b2, echo=FALSE, fig.cap="Loss Ratios : $0.1 \\leq \\alpha,\\gamma \\leq 2$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("loss-b2.png")
+```
+### Results (Cont.)
+    
+- Inflation gap tilting rules are strongly preferred to unemployment gap tilting rules
+- stronger results compared to output gap specification
+- Robust results
+\vspace{0.6cm}
+
+```{r table-2, echo=FALSE,fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("table-2.png")
+```
+
+### Results (Cont.)
+#### Output Gap, $R^*=2,\pi^*=2$
+- Economic performance better in low deviations - weaker result compared with time varying $R^*$ specification
+- The average discretion-to-rules loss ratio is 1.75
+    
+### {}
+```{r loss-a3, echo=FALSE, fig.cap="Loss Ratios : $0.1 \\leq \\alpha,\\gamma \\leq 1$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("loss-a3.png")
+```
+### {}
+```{r loss-b3, echo=FALSE, fig.cap="Loss Ratios : $0.1 \\leq \\alpha,\\gamma \\leq 2$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("loss-b3.png")
+```
+### Results (Cont.)
+    
+
+```{r table-3, echo=FALSE,fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("table-3.png")
+```
+
+### Results (Cont.)
+#### Output Gap, Time-Varying $R^*$, Time-Varying Inflation Target
+- time-varying inflation target calculated by Fuhrer and Olivei (2017)
+- The average discretion-to-rules loss ratio is 1.74 (weak compared to specification 1)
+- unlike other three specs, results weaker for the 400 rules than for the 100 rules (economic peformance)
+    
+### {}
+```{r loss-a4, echo=FALSE, fig.cap="Loss Ratios : $0.1 \\leq \\alpha,\\gamma \\leq 1$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("loss-a4.png")
+```
+### {}
+```{r loss-b4, echo=FALSE, fig.cap="Loss Ratios : $0.1 \\leq \\alpha,\\gamma \\leq 2$", fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("loss-b4.png")
+```
+### Results (Cont.)
+    
+
+```{r table-4, echo=FALSE,fig.align='center',fig.height=2,fig.width=2,out.width="100%"}
+include_graphics("table-4.png")
+```
+### Initial Assessments
+
+-   Fed should **"constrain"** constrained direction
+
+-   Results consistent with policy prescriptions (Woodford,2003; Orphanides and Williams, 2007; Laubach and Williams (2016))
+
+-   Advocates addition of inflation tilting rule to the Taylor rule
